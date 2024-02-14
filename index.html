@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>朋友生日快乐！</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        .star-field {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(white, transparent), radial-gradient(white, transparent);
+            background-size: 100px 100px, 200px 200px;
+            animation: animateStars 30s linear infinite;
+        }
+
+        .star-field::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('stars.png');
+            opacity: 0.2;
+            animation: moveClouds 20s linear infinite;
+            z-index: -1;
+        }
+
+        .birthday-container {
+            position: relative;
+            width: 80%;
+            height: 80%;
+            margin: auto;
+            text-align: center;
+            color: #fff;
+            z-index: 1;
+        }
+
+        .birthday-cake {
+            width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        audio {
+            display: none;
+        }
+
+        @keyframes animateStars {
+            from {background-position: 0 0, 0 0;}
+            to {background-position: 500px 500px, 1000px 1000px;}
+        }
+
+        @keyframes moveClouds {
+            0% {transform: translateX(0);}
+            100% {transform: translateX(-100%);}
+        }
+
+        .birthday-message {
+            animation: fadeInUp 2s ease-in-out forwards;
+        }
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="star-field"></div>
+    
+    <div class="birthday-container">
+        <img src="birthday-cake.jpg" alt="生日蛋糕" class="birthday-cake">
+        <h1 class="birthday-message">祝你生日快乐，亲爱的朋友！愿你的每一天都充满阳光与欢笑！</h1>
+        <!-- 替换此处的音频文件路径 -->
+        <audio id="birthday-song" controls autoplay loop>
+            <source src="audio.mp3" type="audio/mpeg">
+            您的浏览器不支持音频播放，请更新或更换浏览器。
+        </audio>
+    </div>
+
+    <script>
+        // 立即加载并自动播放音乐
+        document.getElementById('birthday-song').play();
+    </script>
+</body>
+</html>
